@@ -15,13 +15,21 @@ class RpBottomBarState extends State<RpBottomBar> {
         index: isActive,
         children: _pages,
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Container(
         margin: EdgeInsets.symmetric(horizontal: 16.r),
         padding: EdgeInsets.all(8.r),
         decoration: BoxDecoration(
           color: RpColors.white,
           borderRadius: BorderRadius.circular(100).r,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              offset: const Offset(1.00, 1.00),
+              blurRadius: 19,
+              spreadRadius: 1.0,
+            ),
+          ],
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,

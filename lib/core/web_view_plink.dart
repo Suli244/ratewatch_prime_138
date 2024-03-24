@@ -33,7 +33,7 @@ class _WebPlinkState extends State<WebFF> {
         title: Text(
           widget.title,
           style: TextStyle(
-            fontSize: 16.h,
+            fontSize: 19.h,
             fontWeight: FontWeight.w500,
             color: Colors.black,
           ),
