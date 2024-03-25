@@ -76,77 +76,146 @@ class _SellPageState extends State<SellPage> {
             borderColor: Colors.white,
           ),
           SizedBox(height: 16.h),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: 62,
-            decoration: BoxDecoration(
-              color: RpColors.white,
-              borderRadius: BorderRadius.circular(16.r),
-            ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.sp),
-              child: DropdownButtonHideUnderline(
-                child: DropdownButton<String>(
-                  icon: const Align(
-                      alignment: Alignment.centerRight,
-                      child: Icon(
-                        Icons.keyboard_arrow_down_sharp,
-                        color: RpColors.grey333333,
-                      )),
-                  borderRadius: BorderRadius.circular(14.sp),
-                  elevation: 0,
-                  dropdownColor: RpColors.blue0075FF,
-                  focusColor: Colors.white,
-                  hint: Text(
+          RpMotion(
+            onPressed: () {
+              showModalBottomSheet<void>(
+                context: context,
+                builder: (BuildContext context) {
+                  return Container(
+                    padding: EdgeInsets.all(16.r),
+                    height: 600.h,
+                    decoration: const BoxDecoration(
+                        color: Color(0xFFF1F3F6),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
+                        )),
+                    child: Center(
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const BackButton(
+                                color: RpColors.black,
+                              ),
+                              Text(
+                                'Deposit Currency',
+                                style: TextStyle(
+                                  fontSize: 20.h,
+                                  fontWeight: FontWeight.w700,
+                                  color: RpColors.grey333333,
+                                ),
+                              ),
+                              SizedBox(width: 35.w),
+                            ],
+                          ),
+                          const Divider(),
+                          SizedBox(height: 10.h),
+                          RpMotion(
+                            onPressed: () {
+                              setState(() {
+                                depositCurrency = 'USD';
+                                Navigator.pop(context);
+                              });
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(16.r),
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                color: RpColors.white,
+                                borderRadius: BorderRadius.circular(16.r),
+                              ),
+                              child: Text(
+                                'USD',
+                                style: TextStyle(
+                                  fontSize: 16.h,
+                                  fontWeight: FontWeight.w600,
+                                  color: RpColors.grey333333,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 10.h),
+                          RpMotion(
+                            onPressed: () {
+                              setState(() {
+                                depositCurrency = 'EUR';
+                                Navigator.pop(context);
+                              });
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(16.r),
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                color: RpColors.white,
+                                borderRadius: BorderRadius.circular(16.r),
+                              ),
+                              child: Text(
+                                'EUR',
+                                style: TextStyle(
+                                  fontSize: 16.h,
+                                  fontWeight: FontWeight.w600,
+                                  color: RpColors.grey333333,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 10.h),
+                          RpMotion(
+                            onPressed: () {
+                              setState(() {
+                                depositCurrency = 'GBP';
+                                Navigator.pop(context);
+                              });
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(16.r),
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                color: RpColors.white,
+                                borderRadius: BorderRadius.circular(16.r),
+                              ),
+                              child: Text(
+                                'GBP',
+                                style: TextStyle(
+                                  fontSize: 16.h,
+                                  fontWeight: FontWeight.w600,
+                                  color: RpColors.grey333333,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
+            child: Container(
+              padding: EdgeInsets.all(16.r),
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                color: RpColors.white,
+                borderRadius: BorderRadius.circular(16.r),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
                     depositCurrency,
                     style: TextStyle(
                       fontSize: 16.h,
                       fontWeight: FontWeight.w600,
-                      color: RpColors.black,
+                      color: RpColors.grey333333,
                     ),
                   ),
-                  value: null,
-                  items: [
-                    DropdownMenuItem<String>(
-                      value: 'USD',
-                      child: Text(
-                        'USD',
-                        style: TextStyle(
-                          fontSize: 16.h,
-                          fontWeight: FontWeight.w600,
-                          color: RpColors.white,
-                        ),
-                      ),
-                    ),
-                    DropdownMenuItem<String>(
-                      value: 'EUR',
-                      child: Text(
-                        'EUR',
-                        style: TextStyle(
-                          fontSize: 16.h,
-                          fontWeight: FontWeight.w600,
-                          color: RpColors.white,
-                        ),
-                      ),
-                    ),
-                    DropdownMenuItem<String>(
-                      value: 'GBP',
-                      child: Text(
-                        'GBP',
-                        style: TextStyle(
-                          fontSize: 16.h,
-                          fontWeight: FontWeight.w600,
-                          color: RpColors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                  onChanged: (value) {
-                    setState(() {
-                      depositCurrency = value!;
-                    });
-                  },
-                ),
+                  const Icon(
+                    Icons.chevron_right,
+                    color: RpColors.grey333333,
+                  )
+                ],
               ),
             ),
           ),
