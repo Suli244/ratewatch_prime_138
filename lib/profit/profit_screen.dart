@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ratewatch_prime_138/charts/charts_cubit.dart';
+import 'package:ratewatch_prime_138/charts/charts_screen.dart';
 import 'package:ratewatch_prime_138/core/app_unfocuser.dart';
 import 'package:ratewatch_prime_138/core/rp_colors.dart';
 import 'package:ratewatch_prime_138/core/rp_motin.dart';
+import 'package:ratewatch_prime_138/currency_pairs/currency_pairs.dart';
+import 'package:ratewatch_prime_138/currency_pairs/model/currency_model.dart';
 import 'package:ratewatch_prime_138/profit/buy_page.dart';
 import 'package:ratewatch_prime_138/profit/sell_page.dart';
 
@@ -15,6 +20,10 @@ class ProfitScreen extends StatefulWidget {
 
 class _ProfitScreenState extends State<ProfitScreen> {
   String page = 'BUY';
+  CurentModel curre = CurentModel(
+    icon: 'assets/icons/currency1.png',
+    title: 'ARS / USD',
+  );
   @override
   Widget build(BuildContext context) {
     return AppUnfocuser(
@@ -24,6 +33,37 @@ class _ProfitScreenState extends State<ProfitScreen> {
             padding: EdgeInsets.symmetric(horizontal: 16.r),
             child: Column(
               children: [
+                SizedBox(height: 10.h),
+                RpMotion(
+                  onPressed: () async {
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CurrencyPairs(
+                          onPpp: (value) {
+                            setState(() {
+                              curre = value;
+                            });
+                          },
+                        ),
+                      ),
+                    );
+                    context.read<PlusCurCubit>().updateChartData(curre);
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.all(16.r),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.r),
+                      color: RpColors.white,
+                    ),
+                    child: Ccc(
+                      icon: curre.icon,
+                      title: curre.title,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 16.h),
                 Container(
                   padding: EdgeInsets.all(5.r),
                   width: MediaQuery.of(context).size.width,
