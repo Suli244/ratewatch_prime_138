@@ -4,6 +4,8 @@ import 'package:ratewatch_prime_138/core/rp_colors.dart';
 import 'package:ratewatch_prime_138/core/rp_motin.dart';
 import 'package:ratewatch_prime_138/currency_pairs/model/currency_model.dart';
 import 'package:ratewatch_prime_138/currency_pairs/widget/curren_item.dart';
+import 'package:ratewatch_prime_138/premium/premium_screen.dart';
+import 'package:ratewatch_prime_138/premium/sharik_lear_met_ppp.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CurrencyPairs extends StatefulWidget {
@@ -92,31 +94,46 @@ class _CurrencyPairsState extends State<CurrencyPairs> {
                 borderRadius: BorderRadius.circular(20).r,
                 color: Colors.white,
               ),
-              child: ListView.separated(
-                padding: const EdgeInsets.only(bottom: 0),
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  final ind = curreList.elementAt(index);
-                  return CurrencyItem(
-                    icon: ind.icon,
-                    title: ind.title,
-                    isActiv: ind.isLike,
-                    onPressed: () {
-                      _toggleFavorite(index);
-                    },
-                    onTap: () {
-                      widget.onPpp(ind);
-                      Navigator.pop(context);
-                    },
-                  );
-                },
-                separatorBuilder: (context, index) => Divider(
-                  color: RpColors.grey767680.withOpacity(0.12),
-                  height: 25.h,
-                ),
-                itemCount: curreList.length,
-              ),
+              child: FutureBuilder(
+                  future: getRatewatchPrimePremvd(),
+                  builder: (context, snapshot) {
+                    return ListView.separated(
+                      padding: const EdgeInsets.only(bottom: 0),
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        final ind = curreList.elementAt(index);
+                        return CurrencyItem(
+                          icon: ind.icon,
+                          title: ind.title,
+                          isActiv: ind.isLike,
+                          onPressed: () {
+                            if (snapshot.hasData && !snapshot.data!) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const PremiumScreen(
+                                    isClose: true,
+                                  ),
+                                ),
+                              );
+                            } else {
+                              _toggleFavorite(index);
+                            }
+                          },
+                          onTap: () {
+                            widget.onPpp(ind);
+                            Navigator.pop(context);
+                          },
+                        );
+                      },
+                      separatorBuilder: (context, index) => Divider(
+                        color: RpColors.grey767680.withOpacity(0.12),
+                        height: 25.h,
+                      ),
+                      itemCount: curreList.length,
+                    );
+                  }),
             ),
           ],
         ),
