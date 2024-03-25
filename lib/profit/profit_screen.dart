@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ratewatch_prime_138/core/app_unfocuser.dart';
 import 'package:ratewatch_prime_138/core/rp_colors.dart';
 import 'package:ratewatch_prime_138/core/rp_motin.dart';
 import 'package:ratewatch_prime_138/profit/buy_page.dart';
@@ -16,7 +17,7 @@ class _ProfitScreenState extends State<ProfitScreen> {
   String page = 'BUY';
   @override
   Widget build(BuildContext context) {
-    return FocusScope(
+    return AppUnfocuser(
       child: Scaffold(
         body: SafeArea(
           child: Padding(
