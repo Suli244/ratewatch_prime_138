@@ -3,9 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ratewatch_prime_138/charts/charts_cubit.dart';
 import 'package:ratewatch_prime_138/core/rp_colors.dart';
+import 'package:ratewatch_prime_138/premium/ratewatch_prime_adapsas.dart';
 import 'package:ratewatch_prime_138/splash/splash_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await RatewatchPrimeAdapty().initializeRatewatchPrimeAdapty();
   runApp(const MyApp());
 }
 

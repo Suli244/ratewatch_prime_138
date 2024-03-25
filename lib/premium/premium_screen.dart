@@ -1,5 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +12,8 @@ import 'package:ratewatch_prime_138/core/rp_colors.dart';
 import 'package:ratewatch_prime_138/core/rp_motin.dart';
 import 'package:ratewatch_prime_138/core/urls.dart';
 import 'package:ratewatch_prime_138/core/web_view_plink.dart';
+import 'package:ratewatch_prime_138/premium/ratewatch_prime_adapsas.dart';
+import 'package:ratewatch_prime_138/premium/sharik_lear_met_ppp.dart';
 import 'package:ratewatch_prime_138/premium/widget/premium_item_widget.dart';
 
 class PremiumScreen extends StatefulWidget {
@@ -19,6 +24,21 @@ class PremiumScreen extends StatefulWidget {
 }
 
 class _PremiumScreenState extends State<PremiumScreen> {
+  Future<void> ratewatchPrimePurchase() async {
+    final ratewatchPrimePaywall =
+        await RatewatchPrimeAdapty().ratewatchPrimeGetPaywall(DocFF.bsvssewew);
+    if (ratewatchPrimePaywall == null) return;
+    final ratewatchPrimeProducts = await RatewatchPrimeAdapty()
+        .ratewatchPrimeGetPaywallProducts(ratewatchPrimePaywall);
+    if (ratewatchPrimeProducts == null) return;
+    if (kDebugMode) log('RatewatchPrime');
+
+    await RatewatchPrimeAdapty()
+        .ratewatchPrimeMakePurchase(ratewatchPrimeProducts.first);
+  }
+
+  bool nvakjvnnasnk = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +85,9 @@ class _PremiumScreenState extends State<PremiumScreen> {
                     ),
                     const Spacer(),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        restoreRatewatchPrimePremvd(context);
+                      },
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -129,16 +151,24 @@ class _PremiumScreenState extends State<PremiumScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w),
                 child: RpMotion(
-                  onPressed: () {
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const RpBottomBar(
-                          indexScr: 0,
+                  onPressed: () async {
+                    setState(() => nvakjvnnasnk = true);
+                    await ratewatchPrimePurchase();
+                    final hasPremiumStatusSmartTrader =
+                        await RatewatchPrimeAdapty()
+                            .ratewatchPrimeHasPremiumStatus();
+                    if (hasPremiumStatusSmartTrader) {
+                      await setRatewatchPrimePremvd();
+                      // ignore: use_build_context_synchronously
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const RpBottomBar(),
                         ),
-                      ),
-                      (protected) => false,
-                    );
+                        (route) => false,
+                      );
+                    }
+                    setState(() => nvakjvnnasnk = false);
                   },
                   child: Container(
                     width: double.infinity,
@@ -152,14 +182,19 @@ class _PremiumScreenState extends State<PremiumScreen> {
                         horizontal: 60.w,
                       ),
                       child: Center(
-                        child: Text(
-                          'Buy Premium \$0.99',
-                          style: TextStyle(
-                            color: RpColors.white,
-                            fontSize: 18.h,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
+                        child: nvakjvnnasnk
+                            ? const CircularProgressIndicator(
+                                valueColor:
+                                    AlwaysStoppedAnimation(Colors.white),
+                              )
+                            : Text(
+                                'Buy Premium \$0.99',
+                                style: TextStyle(
+                                  color: RpColors.white,
+                                  fontSize: 18.h,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
                       ),
                     ),
                   ),
