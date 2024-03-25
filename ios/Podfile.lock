@@ -1,4 +1,8 @@
 PODS:
+  - Adapty (2.10.1)
+  - adapty_flutter (2.10.0):
+    - Adapty (= 2.10.1)
+    - Flutter
   - Flutter (1.0.0)
   - in_app_review (0.2.0):
     - Flutter
@@ -16,6 +20,7 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - adapty_flutter (from `.symlinks/plugins/adapty_flutter/ios`)
   - Flutter (from `Flutter`)
   - in_app_review (from `.symlinks/plugins/in_app_review/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
@@ -24,7 +29,13 @@ DEPENDENCIES:
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
   - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
 
+SPEC REPOS:
+  trunk:
+    - Adapty
+
 EXTERNAL SOURCES:
+  adapty_flutter:
+    :path: ".symlinks/plugins/adapty_flutter/ios"
   Flutter:
     :path: Flutter
   in_app_review:
@@ -41,6 +52,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
 
 SPEC CHECKSUMS:
+  Adapty: 8458d44e75607e38da8845ba40893d53b51ae409
+  adapty_flutter: d1336eec102bb3e11de83715e661a934df76fd67
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   in_app_review: 318597b3a06c22bb46dc454d56828c85f444f99d
   path_provider_foundation: 3784922295ac71e43754bd15e0653ccfd36a147c
@@ -49,6 +62,6 @@ SPEC CHECKSUMS:
   url_launcher_ios: 6116280ddcfe98ab8820085d8d76ae7449447586
   webview_flutter_wkwebview: be0f0d33777f1bfd0c9fdcb594786704dbf65f36
 
-PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
+PODFILE CHECKSUM: a57f30d18f102dd3ce366b1d62a55ecbef2158e5
 
-COCOAPODS: 1.12.0
+COCOAPODS: 1.12.1

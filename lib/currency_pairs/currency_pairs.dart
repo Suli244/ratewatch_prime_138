@@ -7,8 +7,8 @@ import 'package:ratewatch_prime_138/currency_pairs/widget/curren_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CurrencyPairs extends StatefulWidget {
-  const CurrencyPairs({super.key});
-
+  const CurrencyPairs({super.key, required this.onPpp});
+  final ValueChanged onPpp;
   @override
   State<CurrencyPairs> createState() => _CurrencyPairsState();
 }
@@ -104,6 +104,10 @@ class _CurrencyPairsState extends State<CurrencyPairs> {
                     isActiv: ind.isLike,
                     onPressed: () {
                       _toggleFavorite(index);
+                    },
+                    onTap: () {
+                      widget.onPpp(ind);
+                      Navigator.pop(context);
                     },
                   );
                 },

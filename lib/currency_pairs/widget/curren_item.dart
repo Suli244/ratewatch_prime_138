@@ -12,41 +12,49 @@ class CurrencyItem extends StatelessWidget {
     required this.title,
     required this.onPressed,
     this.isActiv = false,
+    required this.onTap,
   });
 
   final String icon;
   final String title;
   final Function() onPressed;
+  final Function() onTap;
   final bool isActiv;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Image.asset(
-          icon,
-          width: 52.w,
+    return RpMotion(
+      onPressed: onTap,
+      child: Container(
+        color: Colors.transparent,
+        child: Row(
+          children: [
+            Image.asset(
+              icon,
+              width: 52.w,
+            ),
+            SizedBox(width: 10.w),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 16.h,
+                fontWeight: FontWeight.w600,
+                color: RpColors.grey333333,
+              ),
+            ),
+            const Spacer(),
+            RpMotion(
+              onPressed: onPressed,
+              child: Image.asset(
+                isActiv
+                    ? 'assets/icons/like_true.png'
+                    : 'assets/icons/like_false.png',
+                width: 24.w,
+              ),
+            ),
+          ],
         ),
-        SizedBox(width: 10.w),
-        Text(
-          title,
-          style: TextStyle(
-            fontSize: 16.h,
-            fontWeight: FontWeight.w600,
-            color: RpColors.grey333333,
-          ),
-        ),
-        const Spacer(),
-        RpMotion(
-          onPressed: onPressed,
-          child: Image.asset(
-            isActiv
-                ? 'assets/icons/like_true.png'
-                : 'assets/icons/like_false.png',
-            width: 24.w,
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

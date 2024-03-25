@@ -2,14 +2,9 @@ import 'dart:math';
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ratewatch_prime_138/currency_pairs/model/currency_model.dart';
 
-enum Timeframe {
-  day,
-  fiveddddd,
-  month,
-  year,
-  threeYears
-}
+enum Timeframe { day, fiveddddd, month, year, threeYears }
 
 extension on Timeframe {
   int get ddddd {
@@ -73,7 +68,7 @@ class PlusCurCubit extends Cubit<List<FlSpot>> {
           'Jan 23',
           'Jul 23',
           'Jan 24'
-          'Feb 24'
+              'Feb 24'
         ];
         break;
       default:
@@ -96,5 +91,16 @@ class PlusCurCubit extends Cubit<List<FlSpot>> {
     });
 
     emit(makncsava);
+  }
+
+  void updateChartData(CurentModel currency) async {
+    final random = Random();
+    List<FlSpot> newData = List.generate(10, (index) {
+      final double x = index.toDouble();
+      final double y = random.nextDouble() * 10;
+      return FlSpot(x, y);
+    });
+
+    emit(newData);
   }
 }
