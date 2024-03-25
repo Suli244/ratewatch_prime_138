@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
           title: 'RateWatch Prime',
           home: child,
           theme: ThemeData(
+            fontFamily: 'SFProDisplay',
             splashColor: Colors.transparent,
             splashFactory: NoSplash.splashFactory,
             highlightColor: Colors.transparent,
