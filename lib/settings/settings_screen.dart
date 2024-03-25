@@ -4,6 +4,7 @@ import 'package:ratewatch_prime_138/core/rp_colors.dart';
 import 'package:ratewatch_prime_138/core/urls.dart';
 import 'package:ratewatch_prime_138/core/web_view_plink.dart';
 import 'package:ratewatch_prime_138/premium/premium_screen.dart';
+import 'package:ratewatch_prime_138/premium/sharik_lear_met_ppp.dart';
 import 'package:ratewatch_prime_138/settings/widget/settings_item_widget.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -26,24 +27,32 @@ class SettingsScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: Column(
           children: [
-            SetItWid(
-              text: 'Get Premium',
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const PremiumScreen(
-                      isClose: true,
-                    ),
-                  ),
-                );
+            FutureBuilder(
+              future: getRatewatchPrimePremvd(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData && !snapshot.data!) {
+                  return SetItWid(
+                    text: 'Get Premium',
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PremiumScreen(
+                            isClose: true,
+                          ),
+                        ),
+                      );
+                    },
+                    isColor: false,
+                  );
+                }
+                return const SizedBox();
               },
-              isColor: false,
             ),
             SetItWid(
               text: 'Privacy Policy',
               onPressed: () {
-                 Navigator.push(
+                Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => const WebFF(
