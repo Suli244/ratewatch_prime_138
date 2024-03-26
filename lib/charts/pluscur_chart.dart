@@ -16,7 +16,7 @@ class PlusCurChart extends StatelessWidget {
     return BlocBuilder<PlusCurCubit, List<FlSpot>>(
       builder: (context, points) {
         return SizedBox(
-          height: 496.h,
+          height: 480.h,
           child: LineChart(
             LineChartData(
               lineTouchData: LineTouchData(

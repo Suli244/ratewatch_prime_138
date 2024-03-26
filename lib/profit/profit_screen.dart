@@ -44,6 +44,7 @@ class _ProfitScreenState extends State<ProfitScreen> {
                             setState(() {
                               curre = value;
                             });
+                            
                           },
                         ),
                       ),
