@@ -5,7 +5,7 @@ import 'package:ratewatch_prime_138/core/rp_motin.dart';
 import 'package:ratewatch_prime_138/currency_pairs/model/currency_model.dart';
 import 'package:ratewatch_prime_138/currency_pairs/widget/curren_item.dart';
 import 'package:ratewatch_prime_138/premium/premium_screen.dart';
-import 'package:ratewatch_prime_138/premium/sharik_lear_met_ppp.dart';
+import 'package:ratewatch_prime_138/premium/ratewatch_prime_perfvsv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CurrencyPairs extends StatefulWidget {

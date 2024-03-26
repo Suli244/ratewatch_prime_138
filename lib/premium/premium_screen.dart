@@ -13,7 +13,7 @@ import 'package:ratewatch_prime_138/core/rp_motin.dart';
 import 'package:ratewatch_prime_138/core/urls.dart';
 import 'package:ratewatch_prime_138/core/web_view_plink.dart';
 import 'package:ratewatch_prime_138/premium/ratewatch_prime_adapsas.dart';
-import 'package:ratewatch_prime_138/premium/sharik_lear_met_ppp.dart';
+import 'package:ratewatch_prime_138/premium/ratewatch_prime_perfvsv.dart';
 import 'package:ratewatch_prime_138/premium/widget/premium_item_widget.dart';
 
 class PremiumScreen extends StatefulWidget {

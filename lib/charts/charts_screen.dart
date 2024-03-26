@@ -24,53 +24,53 @@ class _ChartsScreenState extends State<ChartsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ChartsScreen'),
-      ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.r),
-        child: Column(
-          children: [
-            RpMotion(
-              onPressed: () async {
-                await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CurrencyPairs(
-                      onPpp: (value) {
-                        setState(() {
-                          curre = value;
-                        });
-                      },
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.r),
+          child: Column(
+            children: [
+              SizedBox(height: 10.h),
+              RpMotion(
+                onPressed: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CurrencyPairs(
+                        onPpp: (value) {
+                          setState(() {
+                            curre = value;
+                          });
+                        },
+                      ),
                     ),
+                  );
+                  context.read<PlusCurCubit>().updateChartData(curre);
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.all(16.r),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.r),
+                    color: RpColors.white,
                   ),
-                );
-                context.read<PlusCurCubit>().updateChartData(curre);
-              },
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.all(16.r),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.r),
-                  color: RpColors.white,
-                ),
-                child: Ccc(
-                  icon: curre.icon,
-                  title: curre.title,
+                  child: Ccc(
+                    icon: curre.icon,
+                    title: curre.title,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: 16.h),
-            PlusCurToggle(
-              onTimeframeSelected: (index) {
-                context.read<PlusCurCubit>().oihjfnvewvwvvrev(index);
-                context.read<PlusCurCubit>().kmvskmdvsdvsdv(index);
-              },
-            ),
-            SizedBox(height: 20.h),
-            const PlusCurChart(),
-            const Spacer(),
-          ],
+              SizedBox(height: 16.h),
+              PlusCurToggle(
+                onTimeframeSelected: (index) {
+                  context.read<PlusCurCubit>().oihjfnvewvwvvrev(index);
+                  context.read<PlusCurCubit>().kmvskmdvsdvsdv(index);
+                },
+              ),
+              SizedBox(height: 20.h),
+              const PlusCurChart(),
+              const Spacer(),
+            ],
+          ),
         ),
       ),
     );

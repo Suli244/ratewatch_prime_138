@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ratewatch_prime_138/core/my_text_field.dart';
 import 'package:ratewatch_prime_138/core/rp_colors.dart';
 import 'package:ratewatch_prime_138/core/rp_motin.dart';
+import 'package:ratewatch_prime_138/premium/premium_screen.dart';
+import 'package:ratewatch_prime_138/premium/ratewatch_prime_perfvsv.dart';
 
 class BuyPage extends StatefulWidget {
   const BuyPage({super.key});
@@ -162,30 +164,85 @@ class _BuyPageState extends State<BuyPage> {
                             ),
                           ),
                           SizedBox(height: 10.h),
-                          RpMotion(
-                            onPressed: () {
-                              setState(() {
-                                depositCurrency = 'GBP';
-                                Navigator.pop(context);
-                              });
-                            },
-                            child: Container(
-                              padding: EdgeInsets.all(16.r),
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                color: RpColors.white,
-                                borderRadius: BorderRadius.circular(16.r),
-                              ),
-                              child: Text(
-                                'GBP',
-                                style: TextStyle(
-                                  fontSize: 16.h,
-                                  fontWeight: FontWeight.w600,
-                                  color: RpColors.grey333333,
-                                ),
-                              ),
-                            ),
-                          ),
+                          FutureBuilder(
+                              future: getRatewatchPrimePremvd(),
+                              builder: (context, snapshot) {
+                                if (snapshot.hasData) {
+                                  if (!snapshot.data!) {
+                                    return RpMotion(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const PremiumScreen(
+                                              isClose: true,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.all(16.r),
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        decoration: BoxDecoration(
+                                          color: RpColors.yellowFECA13,
+                                          borderRadius:
+                                              BorderRadius.circular(16.r),
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'GBP',
+                                              style: TextStyle(
+                                                fontSize: 16.h,
+                                                fontWeight: FontWeight.w700,
+                                                color: RpColors.grey333333,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: 25.w,
+                                              height: 25.h,
+                                              child: Image.asset(
+                                                'assets/images/crown.png',
+                                                fit: BoxFit.cover,
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  return RpMotion(
+                                    onPressed: () {
+                                      setState(() {
+                                        depositCurrency = 'GBP';
+                                        Navigator.pop(context);
+                                      });
+                                    },
+                                    child: Container(
+                                      padding: EdgeInsets.all(16.r),
+                                      width: MediaQuery.of(context).size.width,
+                                      decoration: BoxDecoration(
+                                        color: RpColors.white,
+                                        borderRadius:
+                                            BorderRadius.circular(16.r),
+                                      ),
+                                      child: Text(
+                                        'GBP',
+                                        style: TextStyle(
+                                          fontSize: 16.h,
+                                          fontWeight: FontWeight.w600,
+                                          color: RpColors.grey333333,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }
+                                return const SizedBox();
+                              }),
                         ],
                       ),
                     ),
