@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) => BlocProvider(
-        create: (context) => PlusCurCubit(),
+        create: (context) => PlusCurCubitIUGBSD(),
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'RateWatch Prime',

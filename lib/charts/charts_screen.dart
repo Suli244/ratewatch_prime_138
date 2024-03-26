@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ratewatch_prime_138/charts/charts_cubit.dart';
-import 'package:ratewatch_prime_138/charts/pluscur_chart.dart';
-import 'package:ratewatch_prime_138/charts/pluscur_toggle.dart';
+import 'package:ratewatch_prime_138/charts/psdihvnsd.dart';
+import 'package:ratewatch_prime_138/charts/ppsvbjds.dart';
 import 'package:ratewatch_prime_138/core/rp_colors.dart';
 import 'package:ratewatch_prime_138/core/rp_motin.dart';
 import 'package:ratewatch_prime_138/currency_pairs/currency_pairs.dart';
@@ -45,7 +45,7 @@ class _ChartsScreenState extends State<ChartsScreen> {
                         ),
                       ),
                     );
-                    context.read<PlusCurCubit>().updateChartData(curre);
+                    context.read<PlusCurCubitIUGBSD>().updateChartDataidnjsdsd(curre);
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width,
@@ -61,14 +61,14 @@ class _ChartsScreenState extends State<ChartsScreen> {
                   ),
                 ),
                 SizedBox(height: 16.h),
-                PlusCurToggle(
+                PlusCurTogglePOJcamcasasd(
                   onTimeframeSelected: (index) {
-                    context.read<PlusCurCubit>().oihjfnvewvwvvrev(index);
-                    context.read<PlusCurCubit>().kmvskmdvsdvsdv(index);
+                    context.read<PlusCurCubitIUGBSD>().oihjfnvewvwvvrev(index);
+                    context.read<PlusCurCubitIUGBSD>().kmvskmdvsdvsdv(index);
                   },
                 ),
                 SizedBox(height: 20.h),
-                const PlusCurChart(),
+                const PlusCurChartkjbscjdvs(),
                 SizedBox(height: 100.h),
               ],
             ),

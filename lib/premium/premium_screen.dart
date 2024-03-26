@@ -10,7 +10,7 @@ import 'package:ratewatch_prime_138/core/rp_motin.dart';
 import 'package:ratewatch_prime_138/core/urls.dart';
 import 'package:ratewatch_prime_138/core/web_view_plink.dart';
 import 'package:ratewatch_prime_138/premium/ratewatch_prime_perfvsv.dart';
-import 'package:ratewatch_prime_138/premium/widget/premium_item_widget.dart';
+import 'package:ratewatch_prime_138/premium/widget/preuhvbnsdsv.dart';
 
 class PremiumScreen extends StatefulWidget {
   const PremiumScreen({super.key, this.isClose = false});
@@ -120,11 +120,11 @@ class _PremiumScreenState extends State<PremiumScreen> {
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: 16.h),
-                    const PremiItem(
+                    const PremiItemkjsbvsdvsdvd(
                       titlePremi: 'Adding currency pairs to favorites',
                     ),
                     SizedBox(height: 10.h),
-                    const PremiItem(
+                    const PremiItemkjsbvsdvsdvd(
                       titlePremi: 'Using pound currency in profit calculator',
                     ),
                   ],
@@ -139,7 +139,7 @@ class _PremiumScreenState extends State<PremiumScreen> {
                       nvakjvnnasnk = true;
                     });
                     final apphudPaywalls = await Apphud.paywalls();
-                    print(apphudPaywalls?.paywalls.first.products?.first);
+                    // print(apphudPaywalls?.paywalls.first.products?.first);
                     await Apphud.purchase(
                       product: apphudPaywalls?.paywalls.first.products?.first,
                     ).whenComplete(

@@ -6,14 +6,14 @@ import 'package:ratewatch_prime_138/core/rp_motin.dart';
 import 'package:ratewatch_prime_138/premium/premium_screen.dart';
 import 'package:ratewatch_prime_138/premium/ratewatch_prime_perfvsv.dart';
 
-class BuyPage extends StatefulWidget {
-  const BuyPage({super.key});
+class BuyPageJNSCAS extends StatefulWidget {
+  const BuyPageJNSCAS({super.key});
 
   @override
-  _BuyPageState createState() => _BuyPageState();
+  _BuyPageJNSCASState createState() => _BuyPageJNSCASState();
 }
 
-class _BuyPageState extends State<BuyPage> {
+class _BuyPageJNSCASState extends State<BuyPageJNSCAS> {
   final openPriceController = TextEditingController();
   final closePriceController = TextEditingController();
   final tradeSizeController = TextEditingController();

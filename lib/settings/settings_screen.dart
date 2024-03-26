@@ -31,7 +31,7 @@ class SettingsScreen extends StatelessWidget {
               future: getRatewatchPrimePremvd(),
               builder: (context, snapshot) {
                 if (snapshot.hasData && !snapshot.data!) {
-                  return SetItWid(
+                  return SetItWidalsbjcsdvd(
                     text: 'Get Premium',
                     onPressed: () {
                       Navigator.push(
@@ -49,7 +49,7 @@ class SettingsScreen extends StatelessWidget {
                 return const SizedBox();
               },
             ),
-            SetItWid(
+            SetItWidalsbjcsdvd(
               text: 'Privacy Policy',
               onPressed: () {
                 Navigator.push(
@@ -63,7 +63,7 @@ class SettingsScreen extends StatelessWidget {
                 );
               },
             ),
-            SetItWid(
+            SetItWidalsbjcsdvd(
               text: 'Terms of Use',
               onPressed: () {
                 Navigator.push(
@@ -77,7 +77,7 @@ class SettingsScreen extends StatelessWidget {
                 );
               },
             ),
-            SetItWid(
+            SetItWidalsbjcsdvd(
               text: 'Support',
               onPressed: () {
                 Navigator.push(

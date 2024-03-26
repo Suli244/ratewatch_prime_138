@@ -8,12 +8,12 @@ import 'package:intl/intl.dart';
 import 'package:ratewatch_prime_138/charts/charts_cubit.dart';
 import 'package:ratewatch_prime_138/core/rp_colors.dart';
 
-class PlusCurChart extends StatelessWidget {
-  const PlusCurChart({super.key});
+class PlusCurChartkjbscjdvs extends StatelessWidget {
+  const PlusCurChartkjbscjdvs({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PlusCurCubit, List<FlSpot>>(
+    return BlocBuilder<PlusCurCubitIUGBSD, List<FlSpot>>(
       builder: (context, points) {
         return SizedBox(
           height: 480.h,
@@ -24,7 +24,7 @@ class PlusCurChart extends StatelessWidget {
                   tooltipBgColor: Colors.white,
                   getTooltipItems: (List<LineBarSpot> touchedSpots) {
                     return touchedSpots.map((LineBarSpot touchedSpot) {
-                      final cubit = context.read<PlusCurCubit>();
+                      final cubit = context.read<PlusCurCubitIUGBSD>();
                       final DateTime date = DateTime.now().subtract(
                         Duration(
                           days: (cubit.pointsCount - touchedSpot.x).toInt(),
@@ -86,7 +86,7 @@ class PlusCurChart extends StatelessWidget {
                     reservedSize: 30,
                     interval: 4,
                     getTitlesWidget: (double value, TitleMeta meta) {
-                      final cubit = context.read<PlusCurCubit>();
+                      final cubit = context.read<PlusCurCubitIUGBSD>();
                       final interval =
                           cubit.pointsCount / (cubit.bottomTitles.length - 1);
                       final index = (value / interval).round();

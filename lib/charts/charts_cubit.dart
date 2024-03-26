@@ -25,13 +25,13 @@ extension on Timeframe {
   }
 }
 
-class PlusCurCubit extends Cubit<List<FlSpot>> {
+class PlusCurCubitIUGBSD extends Cubit<List<FlSpot>> {
   List<String> leftTitles = [];
   List<String> bottomTitles = [];
 
   int pointsCount = 0;
 
-  PlusCurCubit() : super([]) {
+  PlusCurCubitIUGBSD() : super([]) {
     kmvskmdvsdvsdv(Timeframe.day);
   }
 
@@ -93,14 +93,14 @@ class PlusCurCubit extends Cubit<List<FlSpot>> {
     emit(makncsava);
   }
 
-  void updateChartData(CurentModel currency) async {
+  void updateChartDataidnjsdsd(CurentModel currency) async {
     final random = Random();
-    List<FlSpot> newData = List.generate(10, (index) {
-      final double x = index.toDouble();
-      final double y = random.nextDouble() * 10;
-      return FlSpot(x, y);
+    List<FlSpot> apishvoancvj = List.generate(10, (index) {
+      final double xxsvjsds = index.toDouble();
+      final double yyysdv = random.nextDouble() * 10;
+      return FlSpot(xxsvjsds, yyysdv);
     });
 
-    emit(newData);
+    emit(apishvoancvj);
   }
 }

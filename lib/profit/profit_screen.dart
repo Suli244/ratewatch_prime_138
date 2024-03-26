@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ratewatch_prime_138/charts/charts_cubit.dart';
 import 'package:ratewatch_prime_138/charts/charts_screen.dart';
-import 'package:ratewatch_prime_138/core/app_unfocuser.dart';
+import 'package:ratewatch_prime_138/core/appcbjsdd.dart';
 import 'package:ratewatch_prime_138/core/rp_colors.dart';
 import 'package:ratewatch_prime_138/core/rp_motin.dart';
 import 'package:ratewatch_prime_138/currency_pairs/currency_pairs.dart';
@@ -26,7 +26,7 @@ class _ProfitScreenState extends State<ProfitScreen> {
   );
   @override
   Widget build(BuildContext context) {
-    return AppUnfocuser(
+    return AppUnfocuserasbjchascsa(
       child: Scaffold(
         body: SafeArea(
           child: Padding(
@@ -44,12 +44,11 @@ class _ProfitScreenState extends State<ProfitScreen> {
                             setState(() {
                               curre = value;
                             });
-                            
                           },
                         ),
                       ),
                     );
-                    context.read<PlusCurCubit>().updateChartData(curre);
+                    context.read<PlusCurCubitIUGBSD>().updateChartDataidnjsdsd(curre);
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width,
@@ -142,7 +141,7 @@ class _ProfitScreenState extends State<ProfitScreen> {
                 ),
                 SizedBox(height: 6.r),
                 page == 'BUY'
-                    ? const Expanded(child: BuyPage())
+                    ? const Expanded(child: BuyPageJNSCAS())
                     : const Expanded(child: SellPage()),
               ],
             ),

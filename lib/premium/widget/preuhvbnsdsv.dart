@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ratewatch_prime_138/core/rp_colors.dart';
 
-class PremiItem extends StatelessWidget {
-  const PremiItem({
+class PremiItemkjsbvsdvsdvd extends StatelessWidget {
+  const PremiItemkjsbvsdvsdvd({
     super.key,
     required this.titlePremi,
   });

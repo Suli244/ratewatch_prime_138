@@ -3,18 +3,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ratewatch_prime_138/charts/charts_cubit.dart';
 import 'package:ratewatch_prime_138/core/rp_colors.dart';
 
-class PlusCurToggle extends StatefulWidget {
+class PlusCurTogglePOJcamcasasd extends StatefulWidget {
   final void Function(Timeframe) onTimeframeSelected;
-  const PlusCurToggle({
+  const PlusCurTogglePOJcamcasasd({
     super.key,
     required this.onTimeframeSelected,
   });
 
   @override
-  State<PlusCurToggle> createState() => _PlusCurToggleState();
+  State<PlusCurTogglePOJcamcasasd> createState() => _PlusCurTogglePOJcamcasasdState();
 }
 
-class _PlusCurToggleState extends State<PlusCurToggle> {
+class _PlusCurTogglePOJcamcasasdState extends State<PlusCurTogglePOJcamcasasd> {
   int _selectedIndex = 0;
 
   @override

@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ratewatch_prime_138/core/rp_colors.dart';
 import 'package:ratewatch_prime_138/core/rp_motin.dart';
 
-class SetItWid extends StatelessWidget {
-  const SetItWid({
+class SetItWidalsbjcsdvd extends StatelessWidget {
+  const SetItWidalsbjcsdvd({
     super.key,
     required this.text,
     required this.onPressed,
