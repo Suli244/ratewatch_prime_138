@@ -1,10 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:developer';
-
+import 'package:apphud/apphud.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ratewatch_prime_138/core/con_bar.dart';
@@ -12,7 +9,6 @@ import 'package:ratewatch_prime_138/core/rp_colors.dart';
 import 'package:ratewatch_prime_138/core/rp_motin.dart';
 import 'package:ratewatch_prime_138/core/urls.dart';
 import 'package:ratewatch_prime_138/core/web_view_plink.dart';
-import 'package:ratewatch_prime_138/premium/ratewatch_prime_adapsas.dart';
 import 'package:ratewatch_prime_138/premium/ratewatch_prime_perfvsv.dart';
 import 'package:ratewatch_prime_138/premium/widget/premium_item_widget.dart';
 
@@ -24,19 +20,6 @@ class PremiumScreen extends StatefulWidget {
 }
 
 class _PremiumScreenState extends State<PremiumScreen> {
-  Future<void> ratewatchPrimePurchase() async {
-    final ratewatchPrimePaywall =
-        await RatewatchPrimeAdapty().ratewatchPrimeGetPaywall(DocFF.bsvssewew);
-    if (ratewatchPrimePaywall == null) return;
-    final ratewatchPrimeProducts = await RatewatchPrimeAdapty()
-        .ratewatchPrimeGetPaywallProducts(ratewatchPrimePaywall);
-    if (ratewatchPrimeProducts == null) return;
-    if (kDebugMode) log('RatewatchPrime');
-
-    await RatewatchPrimeAdapty()
-        .ratewatchPrimeMakePurchase(ratewatchPrimeProducts.first);
-  }
-
   bool nvakjvnnasnk = false;
 
   @override
@@ -152,26 +135,35 @@ class _PremiumScreenState extends State<PremiumScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 16.w),
                 child: RpMotion(
                   onPressed: () async {
-                    setState(() => nvakjvnnasnk = true);
-                    await ratewatchPrimePurchase();
-                    final hasPremiumStatusSmartTrader =
-                        await RatewatchPrimeAdapty()
-                            .ratewatchPrimeHasPremiumStatus();
-                    if (hasPremiumStatusSmartTrader) {
-                      await setRatewatchPrimePremvd();
-                      // ignore: use_build_context_synchronously
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const RpBottomBar(),
-                        ),
-                        (route) => false,
-                      );
-                    }
-                    setState(() => nvakjvnnasnk = false);
+                    setState(() {
+                      nvakjvnnasnk = true;
+                    });
+                    final apphudPaywalls = await Apphud.paywalls();
+                    print(apphudPaywalls?.paywalls.first.products?.first);
+                    await Apphud.purchase(
+                      product: apphudPaywalls?.paywalls.first.products?.first,
+                    ).whenComplete(
+                      () async {
+                        if (await Apphud.hasPremiumAccess() ||
+                            await Apphud.hasActiveSubscription()) {
+                          await setRatewatchPrimePremvd();
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const RpBottomBar(),
+                            ),
+                            (route) => false,
+                          );
+                        }
+                      },
+                    );
+                    setState(() {
+                      nvakjvnnasnk = false;
+                    });
                   },
                   child: Container(
                     width: double.infinity,
+                    height: 65.h,
                     decoration: BoxDecoration(
                       color: RpColors.purple525DFF,
                       borderRadius: BorderRadius.circular(100.r),
@@ -183,10 +175,8 @@ class _PremiumScreenState extends State<PremiumScreen> {
                       ),
                       child: Center(
                         child: nvakjvnnasnk
-                            ? const CircularProgressIndicator(
-                                valueColor:
-                                    AlwaysStoppedAnimation(Colors.white),
-                              )
+                            ? const CupertinoActivityIndicator(
+                                color: Colors.white)
                             : Text(
                                 'Buy Premium \$0.99',
                                 style: TextStyle(
